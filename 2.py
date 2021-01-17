@@ -139,7 +139,6 @@ class Bot:
                     if len(self.possible_numbers[row][column]) == 1:
                         was_turn = True
                         x = self.possible_numbers[row][column][0]
-                        self.game.set_num(row, column, x)
                         self.set_number(row, column, x)
                         print(row + 1, column + 1, x)
                         self.game.display()
@@ -151,6 +150,7 @@ class Bot:
 
 
     def set_number(self, row, column, num): # устанавливает число и пересчитывает возможные варианты для оставшихся клеток
+        self.game.set_num(row, column, num)
         self.possible_numbers[row][column] = []
         for k in range(9):
             if self.possible_numbers[row][k].count(num) > 0:
